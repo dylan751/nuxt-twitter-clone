@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+
 export default () => {
   const useAuthToken = () => useState("auth_token");
   const useAuthUser = () => useState("auth_user");
@@ -63,12 +65,33 @@ export default () => {
     });
   };
 
+  const reRefreshAccessToken = () => {
+    const authToken = useAuthToken();
+
+    if (!authToken.value) {
+      return;
+    }
+
+    // Decode the auth token
+    const jwt = jwt_decode(authToken.value);
+
+    const newRefreshTime = jwt.exp - 60000;
+
+    // Refreshing the new token every single time
+    setTimeout(async () => {
+      await refreshToken();
+      reRefreshAccessToken();
+    }, newRefreshTime);
+  };
+
   const initAuth = () => {
     setIsAuthLoading(true);
     return new Promise(async (resolve, reject) => {
       try {
         await refreshToken();
         await getUser();
+
+        reRefreshAccessToken();
 
         resolve(true);
       } catch (error) {

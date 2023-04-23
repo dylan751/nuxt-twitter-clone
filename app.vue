@@ -2,9 +2,7 @@
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
       <!-- Loader -->
-      <div v-if="isAuthLoading">
-        <div>Loading</div>
-      </div>
+      <LoadingPage v-if="isAuthLoading" />
 
       <!-- App -->
       <div v-else-if="user" class="min-h-full">
