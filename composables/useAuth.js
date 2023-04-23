@@ -33,6 +33,27 @@ export default () => {
     });
   };
 
+  const refreshToken = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const data = await $fetch("/api/auth/refresh");
+        setToken(data.access_token);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
+  const initAuth = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await refreshToken();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
   return {
     login,
     useAuthUser,
