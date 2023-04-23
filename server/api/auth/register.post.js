@@ -1,5 +1,6 @@
 import { sendError } from "h3";
 import { createUser } from "~/server/db/users";
+import { userTransformer } from "~/server/transformers/user";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -20,11 +21,17 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const userData = { username, email, password, name };
+  const userData = {
+    username,
+    email,
+    password,
+    name,
+    profileImage: "https://picsum.photos/200/200",
+  };
 
   const user = await createUser(userData);
 
   return {
-    body: user,
+    body: userTransformer(user),
   };
 });
