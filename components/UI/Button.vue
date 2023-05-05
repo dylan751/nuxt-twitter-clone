@@ -45,5 +45,15 @@ const textFontSize = computed(() => {
   }
 });
 
-const classes = computed(() => `${paddingClasses.value}`);
+const defaultWidth = computed(() => {
+  switch (props.size) {
+    default:
+      return "w-min";
+  }
+});
+
+const classes = computed(
+  () =>
+    `${paddingClasses.value} ${props.liquid ? "w-full" : defaultWidth.value}`
+);
 </script>

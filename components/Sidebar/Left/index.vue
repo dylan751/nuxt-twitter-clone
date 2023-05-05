@@ -67,6 +67,12 @@
         </template>
         <template v-slot:name>More</template>
       </SidebarLeftTab>
+
+      <div>
+        <UIButton liquid size="lg">
+          <span class="font-bold"> Tweet</span>
+        </UIButton>
+      </div>
     </div>
   </div>
 </template>
