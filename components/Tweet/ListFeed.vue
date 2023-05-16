@@ -1,11 +1,7 @@
 <template>
   <div>
-    <h1>List feed</h1>
-
     <ul>
-      <li v-for="tweet in props.tweets" :key="tweet">
-        {{ tweet.text }}
-      </li>
+      <TweetItem v-for="tweet in props.tweets" :key="tweet.id" :tweet="tweet" />
     </ul>
   </div>
 </template>
