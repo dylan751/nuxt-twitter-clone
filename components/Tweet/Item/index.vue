@@ -1,5 +1,7 @@
 <template>
   <div>
+    <TweetItemHeader :tweet="props.tweet" />
+
     <div class="ml-16">
       <p class="flex-shrink font-medium text-gray-800 w-auto dark:text-white">
         {{ props.tweet.text }}
