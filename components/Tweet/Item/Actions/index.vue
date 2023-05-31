@@ -5,7 +5,7 @@
         <ChatIcon :class="classes" />
       </template>
 
-      <template v-slot:default> 5 </template>
+      <template v-slot:default> {{ props.tweet.repliesCount }} </template>
     </TweetItemActionsIcon>
 
     <TweetItemActionsIcon color="green">
@@ -13,7 +13,7 @@
         <RefreshIcon :class="classes" />
       </template>
 
-      <template v-slot:default> 5 </template>
+      <template v-slot:default> {{ generateRandomNumber() }} </template>
     </TweetItemActionsIcon>
 
     <TweetItemActionsIcon color="red">
@@ -21,7 +21,7 @@
         <HeartIcon :class="classes" />
       </template>
 
-      <template v-slot:default> 5 </template>
+      <template v-slot:default> {{ generateRandomNumber() }} </template>
     </TweetItemActionsIcon>
 
     <TweetItemActionsIcon color="blue">
@@ -29,7 +29,7 @@
         <UploadIcon :class="classes" />
       </template>
 
-      <template v-slot:default> 5 </template>
+      <template v-slot:default> {{ generateRandomNumber() }} </template>
     </TweetItemActionsIcon>
   </div>
 </template>
@@ -41,4 +41,15 @@ import {
   HeartIcon,
   UploadIcon,
 } from "@heroicons/vue/outline";
+
+const props = defineProps({
+  tweet: {
+    type: Object,
+    required: true,
+  },
+});
+
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 100);
+}
 </script>

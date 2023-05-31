@@ -17,7 +17,7 @@
       </div>
 
       <div class="mt-2">
-        <TweetItemActions />
+        <TweetItemActions :tweet="props.tweet" />
       </div>
     </div>
   </div>
