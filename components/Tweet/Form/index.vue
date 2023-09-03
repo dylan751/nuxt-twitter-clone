@@ -26,15 +26,21 @@ const props = defineProps({
     type: String,
     default: "What's happening ?",
   },
+  replyTo: {
+    type: Object,
+    default: null,
+  },
 });
 
 async function handleFormSubmit(data) {
   loading.value = true;
   try {
-    const response = await postTweet(data, {
+    const response = await postTweet({
       text: data.text,
       mediaFiles: data.mediaFiles,
+      replyTo: props.replyTo?.id,
     });
+    alert(JSON.stringify(response));
   } catch (error) {
     console.log(error);
   } finally {
