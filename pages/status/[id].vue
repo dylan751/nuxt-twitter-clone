@@ -5,7 +5,7 @@
         <Title></Title>
       </Head>
 
-      <h1>{{ tweet }}</h1>
+      <TweetDetails :user="user" :tweet="tweet" />
     </MainSection>
   </div>
 </template>
@@ -13,8 +13,9 @@
 <script setup>
 const loading = ref(false);
 const tweet = ref(null);
-
 const { getTweetById } = useTweets();
+const { useAuthUser } = useAuth();
+const user = useAuthUser();
 
 function getTweetIdFromRoute() {
   return useRoute().params.id;

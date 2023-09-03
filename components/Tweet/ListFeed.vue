@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isEmptyArray" class="p-4">
-      <p class="text-center text-gray-500">No tweets</p>
+      <p class="text-center text-gray-500">No tweets 🥲</p>
     </div>
     <div
       v-else
