@@ -5,6 +5,7 @@
       placeholder="Tweet your reply"
       :reply-to="props.tweet"
       :user="props.user"
+      @on-success="handleFormSuccess"
     />
     <TweetListFeed :tweets="replies" />
   </div>
@@ -23,4 +24,8 @@ const props = defineProps({
 });
 
 const replies = computed(() => props.tweet?.replies || []);
+
+function handleFormSuccess(tweet) {
+  navigateTo({ path: `/status/${tweet.id}` });
+}
 </script>

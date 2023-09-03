@@ -17,6 +17,11 @@ const { getTweetById } = useTweets();
 const { useAuthUser } = useAuth();
 const user = useAuthUser();
 
+watch(
+  () => useRoute().params.id,
+  () => getTweet()
+);
+
 function getTweetIdFromRoute() {
   return useRoute().params.id;
 }
