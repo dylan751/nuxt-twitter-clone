@@ -10,7 +10,7 @@
       v-for="tweet in props.tweets"
       :key="tweet.id"
     >
-      <TweetItem :tweet="tweet" />
+      <TweetItem :tweet="tweet" compact />
     </div>
   </div>
 </template>
